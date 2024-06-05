@@ -210,37 +210,3 @@ def test_validate_model_processed_results(model_name, split, seed):
         merged_processed_raw_df[model_processed_question_column_name]
         != merged_processed_raw_df[model_raw_question_column_name]
     ).any(), "question_x and question_y do not match!"
-
-    # model_output_column_name = model_name.get_model_output_column_name(dataset_name)
-    # q_id_column_name = model_name.get_question_id_column_name()
-    # assert (
-    #     not model_raw_df[q_id_column_name].duplicated().any()
-    # ), f"Duplicate q_id in {model_raw_path}!"
-    # assert len(model_raw_df) == len(
-    #     questions_df
-    # ), f"Number of rows in {model_raw_path} does not match {question_source_path}"
-    # merged_df = pd.merge(
-    #     model_raw_df,
-    #     questions_df,
-    #     left_on=q_id_column_name,
-    #     right_on="q_id",
-    #     how="outer",
-    # )
-    # assert len(merged_df) == len(
-    #     questions_df
-    # ), f"Number of rows in merged_df does not match {question_source_path}"
-    # model_raw_question_column_name = model_name.get_question_column_name(dataset_name)
-    # question_source_question_column_name = dataset_name.get_question_column_name()
-    # if model_raw_question_column_name == question_source_question_column_name:
-    #     model_raw_question_column_name = f"{model_raw_question_column_name}_x"
-    #     question_source_question_column_name = (
-    #         f"{question_source_question_column_name}_y"
-    #     )
-    # assert not (
-    #     merged_df[model_raw_question_column_name]
-    #     != merged_df[question_source_question_column_name]
-    # ).any(), "question_x and question_y do not match!"
-
-    # missing_after_merge = merged_df[['gold_answer', 'correct_answer']].isna().any().any()
-    # assert not missing_after_merge, f"Missing values in golden_answer or correct_answer after merge!"
-    # assert not (merged_df["gold_answer"] != merged_df["correct_answer"]).any(), "gold_answer and correct_answer do not match!"
